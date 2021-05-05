@@ -4,32 +4,62 @@
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/knn-classifier"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <meta charset= 'UTF-8'>
     <title> Clasificación de Imágenes y Transferencia de Conocimiento</title>
   </head>
   <body>
-
-    <!-- Add an image that we will use to test -->
-    <img id="img" crossorigin src="https://picsum.photos/200/300?random=3243" width="227" height="227"/>
-    <div id="descripcion_imagen"></div>
-    <button id="cambiaImagen" onclick="cambiarImagen();">Cambiar imagen</button>
+    <div class="w3-container w3-teal" style="text-align: center;">
+      <h1> Clasificación de Imágenes y Transferencia de Conocimiento </h1>
+    </div>
 
     <br>
-    <video autoplay playsinline muted id="webcam" width="224" height="224"></video>
-    <div id="console"></div><br>
-    <div id="console2"></div><br>
-    <button id="clase-a" onclick="addExample(1)">Watch</button>
-    <button id="clase-b" onclick="addExample(2)">Glasses</button>
-    <button id="clase-c" onclick="addExample(3)">Diego</button>
-    <button id="clase-d" onclick="addExample(4)">OK</button>
-    <button id="clase-e" onclick="addExample(5)" >Rock</button><br>
-    <!-- Load index.js after the content of the page -->
-    <script src="script.js?v=151"></script>
-    <br/>
-    <br />
-    <br />
-    <button id="saveKnn"  onclick="saveKnn();">Almacenar configuración</button>
-    <br />
-    <button id="loadKnn" onclick="loadKnn();">Recuperar configuración</button>
+    <br>
+
+  <div>
+    <div style="width:50%;Text-align:center;float:left;">
+      <b>Random Image</b>
+      <br>
+      <br>
+      <br>
+      <!-- Add an image that we will use to test -->
+      <img id="img" crossorigin src="https://picsum.photos/200/300?random=3243" width="227" height="227"/>
+      <br>
+    <br>
+      <div id="descripcion_imagen"></div>
+      <br>
+    <br>
+      <button id="cambiaImagen" class="w3-button w3-teal" onclick="cambiarImagen();">Cambiar imagen</button>
+      <br>
+    <br>
+    </div>
+    <div style="width:50%;Text-align:center;float:left;">
+      <b>Webcam</b>
+      <br>
+      <br>
+      <br>
+      <video autoplay playsinline muted id="webcam" width="224" height="224"></video>
+      <br>
+    <br>
+      <div id="console"></div><br>
+      <div id="console2"></div><br>
+      <button id="clase-a" class="w3-button w3-teal" onclick="addExample(1)">Lentes</button>
+      <button id="clase-b" class="w3-button w3-teal" onclick="addExample(2)">Diego</button>
+      <button id="clase-c" class="w3-button w3-teal" onclick="addExample(3)">Botella</button>
+      <button id="clase-d" class="w3-button w3-teal" onclick="addExample(4)">OK</button>
+      <button id="clase-e" class="w3-button w3-teal" onclick="addExample(5)" >Cargador</button><br>
+      <!-- Load index.js after the content of the page -->
+      <script src="script.js?v=151"></script>
+      
+    </div>
+  </div>
+    
+
+    
+    
+
+
+
 
   </body>
 </html>

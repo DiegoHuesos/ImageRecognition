@@ -1,6 +1,8 @@
 let model;
 
 const webcamElement = document.getElementById('webcam');
+
+//SE DECLARA EL CLASIFICADOR --> KNN (Función)
 const classifier = knnClassifier.create();
 
 const imgEl = document.getElementById("img");
@@ -9,17 +11,20 @@ var count = 0;
 var net ;
 var webcam;
 
-
 async function app(){
 	console.log("Cargando modelo de identificacion de imagenes");
 
-  //Carga el modelo de identifiación de imágenes entrenado por Google
+  //SE CARGA EL MODELO PREENTRENADO DE IMÁGENES POR GGOLE 
   net= await mobilenet.load();
-	console.log("Carga terminada")
 
+	console.log("Carga terminada")
+  
   //clasificamos la imagen de carga
-	const result = await net.classify(imgEl);
+	
+  //SE CLASIFICA LA IMAGEN ALEATORIA
+  const result = await net.classify(imgEl);
 	console.log(result);
+  //SE IMPRIME EL RESULTADO
   descEl.innerHTML= JSON.stringify(result);
 
 
@@ -29,10 +34,14 @@ async function app(){
 	webcam = await tf.data.webcam(webcamElement);
   //y los vamos procesando
   while (true) {
+
+    //CAPTURA SCREENSHOT DEL VIDEO 
     const img = await webcam.capture();
 
+    //CLASIFICA LA IMAGEN DEL VIDEO
     const result = await net.classify(img);
 
+    //FUNCION DE ACTIVACION
     const activation = net.infer(img, 'conv_preds');
     var result2;
     try {
@@ -41,7 +50,7 @@ async function app(){
       result2 = {};
     }
 
-    const classes = ["Untrained", "Watch", "Glasses" , "Diego", "OK","Rock"]
+    const classes = ["Untrained", "Lentes", "Diego" , "Botella", "OK","Cargador"]
 
     document.getElementById('console').innerText = `
       prediction: ${result[0].className}\n
@@ -85,12 +94,11 @@ async function  cambiarImagen(){
   }
 
 
-//
 //add example
 async function addExample (classId) {
   const img = await webcam.capture();
-  const activation = net.infer(img, true);   
-  classifier.addExample(activation, classId); //entrena sobre la marcha 
+  const activation = net.infer(img, true);
+  classifier.addExample(activation, classId);
   //liberamos el tensor
   img.dispose()
 }
@@ -112,4 +120,3 @@ const loadKnn = async ()=>{
 
 
 app()
- 
